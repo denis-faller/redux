@@ -4,17 +4,20 @@ import './App.css';
 
 class App extends Component {
   render() {
-    const { user, page } = this.props;
+    const { user, page, getPhotosAction, handleLoginAction } = this.props
     return (
       <div className="App">
         <header className="App-header">
           <h1 className="App-title">Мой топ фото</h1>
         </header>
         <p>Привет, {user.name}!</p>
-        <p>
-          У тебя {page.photos.length} фото за {page.year}{' '}
-          год
-        </p>
+        <Page
+          photos={page.photos}
+          year={page.year}
+          isFetching={page.isFetching}
+          error={page.error}
+          getPhotos={getPhotosAction}
+        />
       </div>
     );
   }
